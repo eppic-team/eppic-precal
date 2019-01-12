@@ -388,13 +388,13 @@ def fetch_eppic_sync(pdbCode,iface=0,name=None,state=0,entropies=None,logfn=None
 	fetched = []
 
 	if iface: #Single interface
-		filename=os.path.join(fetchpath, "%s-%s.pdb"%(pdbCode,iface))
+		filename=os.path.join(fetchpath, "%s-%s.cif"%(pdbCode,iface))
 		if name is None:
 			name = "{}-{}".format(pdbCode,iface)
 		#Download interface
 		check_fetch = load_eppic(pdbCode,iface,filename,logfn)
 		if check_fetch:
-			cmd.load(filename,name,state,format="pdb",**kwargs)
+			cmd.load(filename,name,state,format="cif",**kwargs)
 			fetched.append(name)
 
 			if entropies is not None:
@@ -408,11 +408,11 @@ def fetch_eppic_sync(pdbCode,iface=0,name=None,state=0,entropies=None,logfn=None
 		iface=1
 		check_fetch = True
 		while check_fetch:
-			filename=os.path.join(fetchpath, "%s-%d.pdb"%(pdbCode,iface))
+			filename=os.path.join(fetchpath, "%s-%d.cif"%(pdbCode,iface))
 			objname = name.format(iface)
 			check_fetch = load_eppic(pdbCode,iface,filename,logfn)
 			if check_fetch:
-				cmd.load(filename,objname,state,format="pdb",**kwargs)
+				cmd.load(filename,objname,state,format="cif",**kwargs)
 				fetched.append(objname)
 
 				if entropies is not None:
