@@ -430,7 +430,7 @@ def load_eppic(pdbid,ifaceid,filename,logfn=None):
 	"""Download the interface from eppic
 	return whether the download was successfull
 	"""
-	fetchurl="http://eppic-web.org/ewui/ewui/fileDownload?type=interface&id=%s&interface=%s"%(pdbid.lower(),ifaceid)
+	fetchurl="http://eppic-web.org/ewui/ewui/fileDownload?type=interface&id=%s&interfaceId=%s&coordsFormat=cif"%(pdbid.lower(),ifaceid)
 
 	is_done=False
 
